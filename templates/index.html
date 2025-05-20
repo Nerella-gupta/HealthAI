@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>PRAKRITICURE</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(to right, #e0f7fa, #f1f8e9);
+      color: #222;
+    }
+
+    header {
+      background: #00796b;
+      color: white;
+      padding: 1.5em;
+      text-align: center;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    nav {
+      margin-top: 10px;
+    }
+
+    nav button {
+      margin: 0 6px;
+      padding: 10px 16px;
+      cursor: pointer;
+      background-color: #004d40;
+      border: none;
+      border-radius: 6px;
+      color: white;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+
+    nav button:hover {
+      background-color: #00251a;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 20px auto;
+      padding: 20px;
+    }
+
+    .section {
+      margin-bottom: 40px;
+      padding: 20px;
+      border-radius: 12px;
+      background-color: #ffffffd1;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.07);
+    }
+
+    .card-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    .card {
+      background: #fff;
+      border-radius: 10px;
+      padding: 15px;
+      text-align: center;
+      width: 200px;
+      box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease;
+    }
+
+    .card:hover {
+      transform: scale(1.05);
+    }
+
+    .card img {
+      width: 100%;
+      height: 150px;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+
+    h2 {
+      color: #00695c;
+      margin-bottom: 15px;
+    }
+
+    .chat-box {
+      border: 1px solid #ccc;
+      padding: 10px;
+      height: 300px;
+      overflow-y: auto;
+      background: #fefefe;
+      border-radius: 8px;
+      margin-bottom: 10px;
+      font-size: 14px;
+    }
+
+    .chat-box div {
+      margin: 6px 0;
+    }
+
+    .option-button {
+      display: inline-block;
+      margin: 6px 4px;
+      padding: 6px 12px;
+      background: #004d40;
+      color: white;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 14px;
+    }
+
+    input[type="text"] {
+      width: 80%;
+      padding: 10px;
+      margin-bottom: 10px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+
+    button {
+      padding: 10px 16px;
+      background: #00796b;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    button:hover {
+      background-color: #004d40;
+    }
+
+    footer {
+      text-align: center;
+      padding: 1.2em;
+      background: #e0e0e0;
+      margin-top: 40px;
+      font-size: 14px;
+    }
+
+    .dark-mode {
+      background-color: #222;
+      color: white;
+    }
+
+    .dark-mode .section {
+      background-color: #2c3e50;
+    }
+
+    .dark-mode .card {
+      background-color: #34495e;
+      color: white;
+    }
+
+    .dark-mode input,
+    .dark-mode .chat-box {
+      background-color: #555;
+      color: white;
+    }
+
+    .dark-mode .option-button {
+      background-color: #00695c;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>PRAKRITICURE</h1>
+    <nav>
+      <button onclick="location.href='signin.html'">Sign In</button>
+      <button onclick="location.href='signup.html'">Sign Up</button>
+      <button onclick="toggleDarkMode()">Toggle Dark Mode</button>
+      <button onclick="document.getElementById('aboutUs').scrollIntoView({behavior: 'smooth'});">About Us</button>
+    </nav>
+  </header>
+
+  <div class="container">
+    <!-- Welcome Cards -->
+    <section class="section">
+     <marquee> <h2>Welcome to PRAKRITICURE</h2></marquee> 
+      <div class="card-container">
+        <div class="card">
+          <img src="assets/Medical.jpg" alt="Allopathy" />
+          <h3>Allopathy</h3>
+        </div>
+        <div class="card">
+          <img src="assets/Ayurvedic.jpg" alt="Ayurveda" />
+          <h3>Ayurveda</h3>
+        </div>
+        <div class="card">
+          <img src="assets/Homeopathy.jpg" alt="Homeopathy" />
+          <h3>Yoga</h3>
+        </div>
+      </div>
+    </section>
+
+    <!-- Chatbot -->
+    <section class="section">
+      <h2>🩺 Vaidya - Health Chatbot</h2>
+      <div id="chat-box" class="chat-box"></div>
+      <input type="text" id="user-input" placeholder="Describe your symptom..." autocomplete="off" />
+      <button onclick="sendMessage()">Send</button>
+    </section>
+
+    <!-- About Us -->
+    <section class="section" id="aboutUs">
+      <h2>About Us</h2>
+      <p><strong>PRAKRITICURE</strong> is an AI-powered health assistant focused on providing natural treatment suggestions based on traditional Indian medicine systems such as Ayurveda, Homeopathy, and Yoga. It leverages AI to suggest personalized treatments for common health conditions such as fever, cough, cold, stomach ache, etc., and offers detailed guidance for holistic wellness.</p>
+    </section>
+  </div>
+
+  <footer>
+    &copy; 2025 PRAKRITICURE | Built with ❤️ and Ayurveda
+  </footer>
+
+  <script>
+    let stage = "initial";
+    let currentSymptom = "";
+
+    function toggleDarkMode() {
+      document.body.classList.toggle("dark-mode");
+    }
+
+    function appendToChat(message, isUser = false) {
+      const box = document.getElementById("chat-box");
+      const div = document.createElement("div");
+      div.textContent = (isUser ? "🧑‍💬 " : "🤖 ") + message;
+      box.appendChild(div);
+      box.scrollTop = box.scrollHeight;
+    }
+
+    function sendMessage(option = null) {
+      let input = document.getElementById("user-input");
+      let message = option || input.value.trim();
+      if (!message) return;
+
+      appendToChat(message, true);
+
+      fetch("/chat", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          message: message,
+          stage: stage,
+          symptom: currentSymptom
+        })
+      })
+      .then(res => res.json())
+      .then(data => {
+        if (data.status === "options") {
+          stage = "treatment-details";
+          currentSymptom = data.symptom;
+          appendToChat("Choose a treatment type:");
+          data.options.forEach(opt => {
+            const btn = document.createElement("button");
+            btn.className = "option-button";
+            btn.textContent = opt;
+            btn.onclick = () => sendMessage(opt);
+            document.getElementById("chat-box").appendChild(btn);
+          });
+        } else {
+          appendToChat(data.response);
+          stage = "initial";
+        }
+        input.value = "";
+      });
+    }
+  </script>
+</body>
+</html>
